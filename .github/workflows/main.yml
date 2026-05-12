@@ -1,0 +1,87 @@
+name: Seed daily board to Firestore
+
+# Generates a Dokubolaget board for the target date and writes it to
+# Firestore at boards/{YYYY-MM-DD}. The runtime app reads from there.
+#
+# Catalog source: https://susbolaget.emrik.org/v1/products (community mirror
+# of the Systembolaget product catalog, CORS-open, ~100MB). Fetched fresh on
+# every run so we don't have to commit a snapshot.
+#
+# Repository secret required:
+#   FIREBASE_SERVICE_ACCOUNT_KEY — JSON contents of a Firebase service account
+#   with Firestore write access to the `boards` collection.
+
+on:
+  workflow_dispatch:
+    inputs:
+      target-date:
+        description: "Target board date (YYYY-MM-DD). Defaults to tomorrow UTC."
+        required: false
+        type: string
+      attempts:
+        description: "Generator attempts (higher = better board, slower run)."
+        required: false
+        type: string
+        default: "3000"
+  schedule:
+    # 00:00 UTC = 02:00 Europe/Stockholm in summer (CEST, UTC+2), 01:00 in
+    # winter (CET, UTC+1). GitHub cron is UTC-only and can't follow DST; the
+    # winter offset is acceptable since the board only needs to be in Firestore
+    # before the next midnight Stockholm anyway.
+    - cron: "0 0 * * *"
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Dokubolaget
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Compute target date
+        id: target
+        shell: bash
+        run: |
+          if [ -n "${{ inputs.target-date }}" ]; then
+            echo "date=${{ inputs.target-date }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "date=$(date -u -d 'tomorrow' +%F)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Fetch fresh products.json
+        shell: bash
+        run: |
+          curl --fail --silent --show-error --retry 3 --max-time 120 \
+            'https://susbolaget.emrik.org/v1/products' \
+            -o ../products.json
+          size=$(wc -c < ../products.json)
+          echo "Fetched products.json: ${size} bytes"
+          if [ "${size}" -lt 1000000 ]; then
+            echo "::error file=products.json::Catalog suspiciously small (${size} bytes); aborting."
+            exit 1
+          fi
+
+      - name: Find candidate tags
+        run: bun run find:tags --min-cell 4
+
+      - name: Generate board for target date
+        run: |
+          bun run generate:board \
+            --seed "${{ steps.target.outputs.date }}" \
+            --boards 1 \
+            --attempts "${{ inputs.attempts }}"
+
+      - name: Upload board to Firestore
+        env:
+          FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+        run: bun run seed:firestore -- --date "${{ steps.target.outputs.date }}"
