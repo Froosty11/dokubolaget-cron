@@ -15,11 +15,16 @@ on:
   workflow_dispatch:
     inputs:
       target-date:
-        description: "Target board date (YYYY-MM-DD). Defaults to tomorrow UTC."
+        description: "Start date for the board range (YYYY-MM-DD). Defaults to tomorrow UTC."
         required: false
         type: string
+      days:
+        description: "Number of consecutive days to seed starting from target-date. The generator produces this many distinct boards (one per day)."
+        required: false
+        type: string
+        default: "1"
       attempts:
-        description: "Generator attempts (higher = better board, slower run)."
+        description: "Generator attempts per board (higher = better board, slower run)."
         required: false
         type: string
         default: "3000"
@@ -48,7 +53,7 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Compute target date
+      - name: Compute target date and day count
         id: target
         shell: bash
         run: |
@@ -57,6 +62,9 @@ jobs:
           else
             echo "date=$(date -u -d 'tomorrow' +%F)" >> "$GITHUB_OUTPUT"
           fi
+          # `days` is only set via workflow_dispatch; for scheduled runs it's empty.
+          days_input="${{ inputs.days }}"
+          echo "days=${days_input:-1}" >> "$GITHUB_OUTPUT"
 
       - name: Fetch fresh products.json
         shell: bash
@@ -74,14 +82,17 @@ jobs:
       - name: Find candidate tags
         run: bun run find:tags --min-cell 4
 
-      - name: Generate board for target date
+      - name: Generate boards for target range
         run: |
           bun run generate:board \
             --seed "${{ steps.target.outputs.date }}" \
-            --boards 1 \
+            --boards "${{ steps.target.outputs.days }}" \
             --attempts "${{ inputs.attempts }}"
 
-      - name: Upload board to Firestore
+      - name: Upload boards to Firestore
         env:
           FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
-        run: bun run seed:firestore -- --date "${{ steps.target.outputs.date }}"
+        run: |
+          bun run seed:firestore -- \
+            --date "${{ steps.target.outputs.date }}" \
+            --days "${{ steps.target.outputs.days }}"
