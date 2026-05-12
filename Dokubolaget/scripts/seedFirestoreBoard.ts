@@ -158,11 +158,15 @@ async function main() {
   for (let offset = 0; offset < args.days; offset += 1) {
     const date = addDaysUtc(args.date, offset);
     const board = boards[offset % boards.length];
+    // Firestore rejects nested arrays, so flatten the 3x3 counts matrix into a
+    // 1D array of nine values in row-major order: [c00,c01,c02,c10,c11,c12,c20,c21,c22].
+    const flatCounts = board.counts.flat();
+
     const document = {
       rows: board.rows.map(stripPredicate),
       cols: board.cols.map(stripPredicate),
       score: board.score,
-      counts: board.counts,
+      counts: flatCounts,
       seed: date,
       generatedAt,
     };
