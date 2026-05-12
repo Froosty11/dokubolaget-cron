@@ -1,0 +1,356 @@
+{
+  "generatedAt": "2026-05-12T12:50:17.584Z",
+  "minCellMatches": 4,
+  "viableTags": [
+    {
+      "id": "Beverage:Rött vin",
+      "label": "Beverage:Rött vin",
+      "family": "beverage",
+      "support": 7295,
+      "share": 0.2681098166047999
+    },
+    {
+      "id": "Beverage:Vitt vin",
+      "label": "Beverage:Vitt vin",
+      "family": "beverage",
+      "support": 4526,
+      "share": 0.16634201918482855
+    },
+    {
+      "id": "Beverage:Ale",
+      "label": "Beverage:Ale",
+      "family": "beverage",
+      "support": 2313,
+      "share": 0.08500863684810173
+    },
+    {
+      "id": "Beverage:Mousserande vin",
+      "label": "Beverage:Mousserande vin",
+      "family": "beverage",
+      "support": 2304,
+      "share": 0.08467786394207799
+    },
+    {
+      "id": "Beverage:Whisky",
+      "label": "Beverage:Whisky",
+      "family": "beverage",
+      "support": 1968,
+      "share": 0.07232900878385828
+    },
+    {
+      "id": "Beverage:Ljus lager",
+      "label": "Beverage:Ljus lager",
+      "family": "beverage",
+      "support": 1186,
+      "share": 0.043588518504906464
+    },
+    {
+      "id": "Beverage:Gin & Genever",
+      "label": "Beverage:Gin & Genever",
+      "family": "beverage",
+      "support": 895,
+      "share": 0.03289352787680547
+    },
+    {
+      "id": "Beverage:Likör",
+      "label": "Beverage:Likör",
+      "family": "beverage",
+      "support": 669,
+      "share": 0.024587452681098167
+    },
+    {
+      "id": "Beverage:Rom & Lagrad sockerrörssprit",
+      "label": "Beverage:Rom & Lagrad sockerrörssprit",
+      "family": "beverage",
+      "support": 612,
+      "share": 0.022492557609614466
+    },
+    {
+      "id": "Beverage:Rosévin",
+      "label": "Beverage:Rosévin",
+      "family": "beverage",
+      "support": 600,
+      "share": 0.022051527068249477
+    },
+    {
+      "id": "Country:Sverige",
+      "label": "Country:Sverige",
+      "family": "geography",
+      "support": 5641,
+      "share": 0.20732110698665882
+    },
+    {
+      "id": "Country:Frankrike",
+      "label": "Country:Frankrike",
+      "family": "geography",
+      "support": 5262,
+      "share": 0.1933918923885479
+    },
+    {
+      "id": "Country:Italien",
+      "label": "Country:Italien",
+      "family": "geography",
+      "support": 4307,
+      "share": 0.15829321180491748
+    },
+    {
+      "id": "Country:Spanien",
+      "label": "Country:Spanien",
+      "family": "geography",
+      "support": 1961,
+      "share": 0.07207174096806204
+    },
+    {
+      "id": "Country:Storbritannien",
+      "label": "Country:Storbritannien",
+      "family": "geography",
+      "support": 1694,
+      "share": 0.06225881142269102
+    },
+    {
+      "id": "Country:USA",
+      "label": "Country:USA",
+      "family": "geography",
+      "support": 1070,
+      "share": 0.03932522327171157
+    },
+    {
+      "id": "Country:Tyskland",
+      "label": "Country:Tyskland",
+      "family": "geography",
+      "support": 983,
+      "share": 0.036127751846815395
+    },
+    {
+      "id": "Country:Sydafrika",
+      "label": "Country:Sydafrika",
+      "family": "geography",
+      "support": 702,
+      "share": 0.025800286669851888
+    },
+    {
+      "id": "Country:Portugal",
+      "label": "Country:Portugal",
+      "family": "geography",
+      "support": 604,
+      "share": 0.022198537248704475
+    },
+    {
+      "id": "ContainerType:Bottle",
+      "label": "ContainerType:Bottle",
+      "family": "containerType",
+      "support": 23116,
+      "share": 0.8495718328494248
+    },
+    {
+      "id": "ContainerType:Can",
+      "label": "ContainerType:Can",
+      "family": "containerType",
+      "support": 3072,
+      "share": 0.11290381858943732
+    },
+    {
+      "id": "ContainerType:Multipack",
+      "label": "ContainerType:Multipack",
+      "family": "containerType",
+      "support": 431,
+      "share": 0.015840346944025873
+    },
+    {
+      "id": "ContainerType:Box",
+      "label": "ContainerType:Box",
+      "family": "containerType",
+      "support": 345,
+      "share": 0.01267962806424345
+    },
+    {
+      "id": "ContainerMaterial:Glass",
+      "label": "ContainerMaterial:Glass",
+      "family": "containerMaterial",
+      "support": 22894,
+      "share": 0.8414127678341725
+    },
+    {
+      "id": "ContainerMaterial:Aluminum/Metal",
+      "label": "ContainerMaterial:Aluminum/Metal",
+      "family": "containerMaterial",
+      "support": 3086,
+      "share": 0.1134183542210298
+    },
+    {
+      "id": "ContainerMaterial:Paper/Cardboard",
+      "label": "ContainerMaterial:Paper/Cardboard",
+      "family": "containerMaterial",
+      "support": 435,
+      "share": 0.01598735712448087
+    },
+    {
+      "id": "ContainerMaterial:Plastic",
+      "label": "ContainerMaterial:Plastic",
+      "family": "containerMaterial",
+      "support": 291,
+      "share": 0.010694990628100996
+    },
+    {
+      "id": "price:budget",
+      "label": "Price: < 100 SEK",
+      "family": "price",
+      "support": 6294,
+      "share": 0.231320518945937
+    },
+    {
+      "id": "price:mid",
+      "label": "Price: 100-200 SEK",
+      "family": "price",
+      "support": 5068,
+      "share": 0.18626189863648057
+    },
+    {
+      "id": "price:premium",
+      "label": "Price: 200-350 SEK",
+      "family": "price",
+      "support": 5862,
+      "share": 0.21544341945679737
+    },
+    {
+      "id": "price:fancy",
+      "label": "Price: 350-700 SEK",
+      "family": "price",
+      "support": 5455,
+      "share": 0.2004851335955015
+    },
+    {
+      "id": "alcohol:light",
+      "label": "Alcohol: < 5%",
+      "family": "alcohol",
+      "support": 1407,
+      "share": 0.05171083097504502
+    },
+    {
+      "id": "alcohol:medium",
+      "label": "Alcohol: 5-10%",
+      "family": "alcohol",
+      "support": 4151,
+      "share": 0.15255981476717262
+    },
+    {
+      "id": "alcohol:strong",
+      "label": "Alcohol: 10-13%",
+      "family": "alcohol",
+      "support": 5790,
+      "share": 0.21279723620860744
+    },
+    {
+      "id": "alcohol:veryStrong",
+      "label": "Alcohol: 13-22%",
+      "family": "alcohol",
+      "support": 10447,
+      "share": 0.3839538388033371
+    },
+    {
+      "id": "alcohol:liquor",
+      "label": "Alcohol: liquor (>=22%)",
+      "family": "alcohol",
+      "support": 5414,
+      "share": 0.19897827924583777
+    },
+    {
+      "id": "volume:standard",
+      "label": "Volume: 330-500 ml",
+      "family": "volume",
+      "support": 4987,
+      "share": 0.1832849424822669
+    },
+    {
+      "id": "volume:party",
+      "label": "Volume: 500-750 ml",
+      "family": "volume",
+      "support": 6379,
+      "share": 0.23444448528060569
+    },
+    {
+      "id": "volume:large",
+      "label": "Volume: 750-1000 ml",
+      "family": "volume",
+      "support": 14131,
+      "share": 0.5193502150023889
+    },
+    {
+      "id": "taste:sweetMid",
+      "label": "Sweetness: medium (3-6)",
+      "family": "taste",
+      "support": 1225,
+      "share": 0.04502186776434268
+    },
+    {
+      "id": "taste:sweetHigh",
+      "label": "Sweetness: high (7+)",
+      "family": "taste",
+      "support": 794,
+      "share": 0.029181520820316807
+    },
+    {
+      "id": "taste:acidLow",
+      "label": "Acidity: low (0-2)",
+      "family": "taste",
+      "support": 22772,
+      "share": 0.8369289573302952
+    },
+    {
+      "id": "taste:acidHigh",
+      "label": "Acidity: high (7+)",
+      "family": "taste",
+      "support": 4415,
+      "share": 0.1622624866772024
+    },
+    {
+      "id": "taste:bitterMid",
+      "label": "Bitterness: medium (3-6)",
+      "family": "taste",
+      "support": 2344,
+      "share": 0.08614796574662796
+    },
+    {
+      "id": "taste:bitterHigh",
+      "label": "Bitterness: high (7+)",
+      "family": "taste",
+      "support": 1446,
+      "share": 0.05314418023448124
+    },
+    {
+      "id": "taste:bodyMid",
+      "label": "Body: medium (3-6)",
+      "family": "taste",
+      "support": 5262,
+      "share": 0.1933918923885479
+    },
+    {
+      "id": "taste:bodyHigh",
+      "label": "Body: full (7+)",
+      "family": "taste",
+      "support": 3541,
+      "share": 0.13014076224778565
+    },
+    {
+      "id": "taste:roughHigh",
+      "label": "Roughness: high (5+)",
+      "family": "taste",
+      "support": 1665,
+      "share": 0.0611929876143923
+    },
+    {
+      "id": "taste:oakMid",
+      "label": "Oak/Cask: medium (2-4)",
+      "family": "taste",
+      "support": 962,
+      "share": 0.035355948399426664
+    },
+    {
+      "id": "taste:oakHigh",
+      "label": "Oak/Cask: high (5+)",
+      "family": "taste",
+      "support": 1600,
+      "share": 0.0588040721819986
+    }
+  ]
+}

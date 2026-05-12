@@ -1,0 +1,18 @@
+{
+  "name": "dokubolaget-seed",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Stand-alone seed-board pipeline for Dokubolaget. Mirrors the build-time slice of the main repo so GitHub Actions can run `find:tags`, `generate:board`, and `seed:firestore` without pulling in the React Native app.",
+  "scripts": {
+    "find:tags": "bun run scripts/findTags.ts",
+    "generate:board": "bun run scripts/generateBoard.ts",
+    "confirm:board": "bun run scripts/confirmBoard.ts",
+    "seed:firestore": "bun run scripts/seedFirestoreBoard.ts"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
